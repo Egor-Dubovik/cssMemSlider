@@ -23,6 +23,7 @@ const arrPhrase = [
 	"When you finally cath the person that's been writing bad code all the time"
 ];
 
+window.addEventListener('resize', init);
 sliderBoxDots.addEventListener("click", switchByDots);
 btnNext.addEventListener("click", switchRight);
 btnPrev.addEventListener("click", switchLeft);
@@ -105,7 +106,6 @@ function switchByDots(e) {
 		displaySliderAction();
 	}
 }
-//------------------------------------------------------------------------------------------------------
 
 // ** functions for display text -----------------------------------------------------------------------
 function changeText(par) {
@@ -131,3 +131,41 @@ function changeText(par) {
 function getRandomNum(max) {
 	return Math.round(Math.random() * max);
 }
+
+// ** switching tooltip --------------------------------------------------------------------------------------
+const wraper = document.querySelector(".wraper");
+let tooltipElem;
+
+document.addEventListener("mouseover", showTooltip);
+document.addEventListener("mouseout", removeTooltip);
+
+function showTooltip(e) {
+	let tooltipText = e.target.dataset.tooltip;
+
+	if (!tooltipText) return false;
+
+	tooltipElem = document.createElement("div");
+	tooltipElem.className = "tooltip";
+	tooltipElem.textContent = tooltipText;
+	wraper.append(tooltipElem);
+
+	let coords = e.target.getBoundingClientRect();
+	let left = coords.left + (coords.width - tooltipElem.offsetWidth) / 2;
+	let top = coords.top - tooltipElem.offsetHeight - 10;
+
+	if (left < 0) left = 0; // don't drive over the left edge of the window
+	if (top < 0) { // if the tooltip doesn't fit on top, then display it on the bottom
+		top = coords.top + coords.height + 10;
+	};
+
+	tooltipElem.style.left = left + "px";
+	tooltipElem.style.top = top + "px";
+}
+
+function removeTooltip(e) {
+	if (tooltipElem) {
+		tooltipElem.remove();
+		tooltipElem = null;
+	}
+}
+//----------------------------------------------------------------------------------
