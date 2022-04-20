@@ -24,8 +24,6 @@ const arrPhrase = [
 ];
 
 
-
-
 (function createDots() {
 	sliderBoxDots.innerHTML = "";
 	const amountDots = Math.round(slides.length / slidesToShow);
@@ -38,4 +36,14 @@ const arrPhrase = [
 	}
 })();
 
+
+// **displaySliderAction -----------------------------------------------------------------------------
+
+function showCurrentDot() {
+	const sliderAllDots = document.querySelectorAll('.slider-dot');
+	sliderAllDots.forEach((dot, i) => {
+		dot.classList.remove("active")
+		if (index === i) dot.classList.add("active");
+	})
+}
 //----------------------------------------------------------------------------------
