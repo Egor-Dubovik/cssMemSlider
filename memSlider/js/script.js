@@ -83,7 +83,6 @@ function showCurrentDot() {
 		if (index === i) dot.classList.add("active");
 	})
 }
-//------------------------------------------------------------------------------------------------------
 
 // ** switching ----------------------------------------------------------------------------------------
 function switchRight() {
@@ -107,3 +106,28 @@ function switchByDots(e) {
 	}
 }
 //------------------------------------------------------------------------------------------------------
+
+// ** functions for display text -----------------------------------------------------------------------
+function changeText(par) {
+	let prase = arrPhrase[index];
+	let count = 0;
+	let out = "";
+	disableNavAbility(true);
+
+	let interval = setTimeout(function createLine() {
+		sliderText.innerHTML = out + "<span class = 'slider-dot__flashing-input'>|</span>";
+		out += prase[count];
+		count++;
+
+		if (count > prase.length) {
+			clearTimeout(interval);
+			disableNavAbility(false);
+		} else {
+			interval = setTimeout(createLine, getRandomNum(getRandomNum(200)))
+		}
+	}, 0);
+}
+
+function getRandomNum(max) {
+	return Math.round(Math.random() * max);
+}
