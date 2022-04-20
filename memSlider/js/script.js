@@ -41,6 +41,28 @@ btnPrev.addEventListener("click", switchLeft);
 })();
 
 // **displaySliderAction -----------------------------------------------------------------------------
+function displaySliderAction() {
+	setPosition();
+	checkBtns();
+	showCurrentDot();
+	changeText();
+}
+
+function setPosition() {
+	track.style.transform = `translateX(${position}px)`;
+};
+
+function checkBtns() {
+	btnNext.disabled = position <= - (slidesAmount - slidesToShow) * slideWidth;
+	btnPrev.disabled = position === 0;
+}
+
+function disableNavAbility(condition) {
+	const sliderNavElements = document.querySelectorAll(".slider-nav");
+	sliderNavElements.forEach(el => {
+		condition ? el.style.pointerEvents = "none" : el.style.pointerEvents = "";
+	});
+}
 
 function showCurrentDot() {
 	const sliderAllDots = document.querySelectorAll('.slider-dot');
