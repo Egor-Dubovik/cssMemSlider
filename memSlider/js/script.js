@@ -40,6 +40,18 @@ btnPrev.addEventListener("click", switchLeft);
 	}
 })();
 
+function init() {
+	slideWidth = (track.clientWidth) / slidesToShow;
+	position = 0
+	index = 0
+
+	slides.forEach((slide, index) => {
+		slide.style.minWidth = `${slideWidth}px`;
+	});
+	displaySliderAction()
+};
+init();
+
 // **displaySliderAction -----------------------------------------------------------------------------
 function displaySliderAction() {
 	setPosition();
