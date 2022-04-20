@@ -23,6 +23,10 @@ const arrPhrase = [
 	"When you finally cath the person that's been writing bad code all the time"
 ];
 
+sliderBoxDots.addEventListener("click", switchByDots);
+btnNext.addEventListener("click", switchRight);
+btnPrev.addEventListener("click", switchLeft);
+
 
 (function createDots() {
 	sliderBoxDots.innerHTML = "";
@@ -36,7 +40,6 @@ const arrPhrase = [
 	}
 })();
 
-
 // **displaySliderAction -----------------------------------------------------------------------------
 
 function showCurrentDot() {
@@ -46,4 +49,27 @@ function showCurrentDot() {
 		if (index === i) dot.classList.add("active");
 	})
 }
-//----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+
+// ** switching ----------------------------------------------------------------------------------------
+function switchRight() {
+	position = 0;
+	position -= ++index * slideWidth;
+	displaySliderAction();
+}
+
+function switchLeft() {
+	position = 0
+	position -= --index * slideWidth;
+	displaySliderAction();
+}
+
+function switchByDots(e) {
+	if (e.target.classList.contains("slider-dot")) {
+		index = +e.target.dataset.indexNum;
+		position = 0;
+		position -= index * slideWidth;
+		displaySliderAction();
+	}
+}
+//------------------------------------------------------------------------------------------------------
