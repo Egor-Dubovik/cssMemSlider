@@ -217,3 +217,61 @@ label div:checked {
 	position: relative;
 }
 
+@media (max-width: 1080px){
+	.slider__content {
+		flex-direction: column;
+	}
+	.content__wraper {
+		text-align: center;
+		width: 289px;
+		/* margin-bottom: 20px; */
+	}
+}
+
+@media (max-width: 600px){
+	.box {
+		max-width: 1400px;
+  }
+
+	.content__wraper {
+		width: auto;
+	}
+
+	.content__text {
+		font-size: 0.8em;
+		line-height: 1.1rem;
+	}
+
+	#r1:checked ~ .slider__content .content__text{
+		margin-top: 0rem;
+	}
+	#r2:checked ~ .slider__content .content__text{
+		margin-top: -4rem;
+	}
+	#r3:checked ~ .slider__content .content__text{
+		margin-top: -7rem;
+	}
+	#r4:checked ~ .slider__content .content__text{
+		margin-top: -10rem;
+	}
+	#r5:checked ~ .slider__content .content__text{
+		margin-top: -13rem;
+	}
+	#r6:checked ~ .slider__content .content__text{
+		margin-top: -17rem;
+	}
+	#r7:checked ~ .slider__content .content__text{
+		margin-top: -21rem;
+	}
+
+	.footer {
+		flex-direction: column;
+	}
+	.footer :not(:last-child) {
+		margin-bottom: 15px;
+	}
+	.slider-text {
+		font-weight: 500;
+	}
+}
+
